@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+	var app = angular.module('app',[]);
+
+	app.controller('f',['$scope','$http',function ($scope,$http) {
+		$http.get('1.php?a=1&b=2').then(function (str) {
+			console.log(str.data);
+		});
+
+		$http.get('1.php',{params: {a: 1,b: 2}}).success(function (str) {
+			console.log(str);
+		});
+	}]);
+	</script>
+</head>
+<body ng-controller="f">
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+angular 适合做 SPA
+
+ngRoute : 不能进行路由嵌套 (ng-view 不能有 ng-view),程序崩溃
+
+angular-ui-router : 可以进行路由嵌套 state
+
+ngRoute:
+1.先引入,再依赖 ngRoute
+2.配置路由表:
+
+$routeProvider.when(path,{
+	templateUrl: 视图,
+	controller: 
+}).when().otherwise({redirectTo: ''})
+
+路由参数: $routeParams
+
+更新参数: $route.updateParams({路由的参数})
+ng-view
+
+ui-router:
+依赖: ui.router
+
+$stateProvider.state(状态名,{
+	templateUrl: 视图,
+	controller: ,
+	url:path
+}).state(状态名,{})
+
+重定向: $urlRouterProvider.otherwise(path);
+路由参数服务: $stateParams
+更新路由: $state.go(状态名,{路由参数});
+ui-view
+
+a标签跳转用ui-sref="状态名"进行跳转
+ui-sref-active: 类名,当路由切换该状态的时候添加进去

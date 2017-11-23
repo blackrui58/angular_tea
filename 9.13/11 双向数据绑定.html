@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			//链式操作
+			// 注册了模块
+			// 2.模块的依赖模块
+			var app = angular.module('app',[]);
+			
+			// 获取模块: angular.module('app') == app
+			app.controller('f',['$scope',function ($scope) {
+				$scope.a = 'abc';
+				// 5秒钟以后,让a的值变为xyw
+				setTimeout(function () {
+					$scope.$apply(function () {
+						$scope.a = 'xyw';
+					});
+				},5000);
+			}])
+		</script>
+	</head>
+	<body ng-controller="f">
+		<!--<h1 ng-click="a = 10">改变a的值</h1>-->
+		{{a}}
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			 div {
+			 	width: 200px;
+			 	height: 200px;
+			 	background: #ccc;
+			 	/*position: absolute;*/
+			 }
+			 h1 {
+			 	width: 100px;
+			 	height: 100px;
+			 	background: red;
+			 	/*position: absolute;*/
+			 }
+			 
+		</style>
+		<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+			app.directive('esDrag',function ($document) {
+//				console.log($document)
+				return  {
+					restrict: 'A',
+					link: function (scope,ele,attr) {
+						// 转化为jq对象
+						ele = $(ele);
+						ele.css('position','absolute');
+						ele.on('mousedown',function (evt) {
+						var x = evt.clientX - ele.offset().left;
+						var y = evt.clientY - ele.offset().top;
+						
+						function move (evt) {
+							var l = evt.clientX - x;
+							var t = evt.clientY - y;
+							
+							ele.css({left: l,top: t});
+						}
+						
+						$document.on('mousemove',move);
+						
+						$document.on('mouseup',function () {
+							// 移除移动事件
+							$document.off('mousemove');
+						});
+						return false;
+					});
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div es-drag></div>
+		
+		<div es-drag></div>
+		
+		<h1 es-drag>wqewqewqewqeq</h1>
+	</body>
+</html>

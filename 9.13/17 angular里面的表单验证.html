@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span {
+				color: red;
+			}
+		</style>
+		<script type="text/javascript" src="angular.js"></script>
+	</head>
+	<body>
+		
+		<form action="#" method="post" name="t_form">
+			<!-- required: 值不能为空 -->
+			<!-- ng-minlength: 长度大于6 -->
+			<!-- ng-pattern: 正则 -->
+			用户名: <input type="text" name="t_user" ng-model="v" ng-minlength="6" ng-pattern="/^[a-z]/" ng-maxlength="10" required/>
+			<!--{{ t_form.t_user.$error }}-->
+			<span ng-show="t_form.t_user.$error.required">用户名不能为空</span>
+			<span ng-show="t_form.t_user.$error.minlength">长度必须超过6个</span>
+			<span ng-show="t_form.t_user.$error.pattern">必须以字母开头</span>
+			<span ng-show="t_form.t_user.$error.maxlength">不能超过10</span>
+			
+			<!--{{ t_form.$invalid }}-->
+			<input type="submit" ng-disabled="t_form.$invalid" />
+			
+		</form>
+		
+	</body>
+</html>

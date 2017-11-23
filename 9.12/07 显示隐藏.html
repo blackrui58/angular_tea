@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background-color:red;
+			}
+		</style>
+		<script src="angular.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-init="a=false">
+		<!--<input type="checkbox" ng-model="v" />
+		{{v}}-->
+		<!--<button ng-click="a=!a">点击</button>-->
+		<button ng-mouseenter="a=true" ng-mouseleave="a=false" >{{a == true ? '隐藏' : '显示'}}</button>
+		<div ng-show="a"></div>
+	</body>
+</html>

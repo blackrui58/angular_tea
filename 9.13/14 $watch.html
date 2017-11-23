@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			//链式操作
+			// 注册了模块
+			// 2.模块的依赖模块
+			var app = angular.module('app',[]);
+			
+			// 获取模块: angular.module('app') == app
+			app.controller('f',['$scope','$interval',function ($scope,$interval) {
+				$scope.time = 10;
+				
+				$scope.arr = [1,2,3,4];
+				
+				$scope.add = function () {
+					return $scope.time * 3;
+				}
+				var timer = $interval(function () {
+					$scope.time--;
+				},1000);
+				
+				// 观察time的变化
+//				$scope.$watch('time',function (n,o) {
+//					if (n == 0) {
+//						$interval.cancel(timer);
+//					}
+//				});
+				
+				// 观察方法的变化
+				$scope.$watch($scope.add,function (n) {
+					if (n == 24) {
+						$interval.cancel(timer);
+					}
+				});
+				
+				$scope.$watch('arr',function (n) {
+					alert('改变了');
+				},true);
+				
+				
+			}])
+		</script>
+	</head>
+	<body ng-controller="f">
+		<!--<h1 ng-click="a = 10">改变a的值</h1>-->
+		<!--<h1 ng-bind="time"></h1>-->
+		{{add()}}
+		<h1 ng-click="arr.push(123)">改变arr值</h1>
+		{{arr}}
+	</body>
+</html>

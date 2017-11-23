@@ -1,0 +1,32 @@
+
+<div class="list-group">
+    <a href="#/detail/{{item.id}}" ng-repeat="item in data | filter: input" class="list-group-item">
+            <span class="badge">{{item.rating.average}}</span>
+        <div class="media">
+            <div class="media-left">
+            <img ng-src={{item.images.small}} alt="{{item.title}}">
+            </div>
+            <div class="media-body">
+                <h3 class="media-heading">{{item.title}}</h3>
+                <h4>导演:
+                    <span ng-repeat="d in item.directors">{{d.name}}<span ng-if="!$last">、</span></span>
+                </h4>
+                <h4>又名:{{item.original_title}}</h4>
+            </div>
+        </div>
+
+
+    </a>
+</div>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    
+    <li ng-class="{active: currentPage==($index+1)}" ng-repeat="(key,value) in arr track by $index"><a ng-click="page(key+1)">{{key+1}}</a></li>
+   
+  </ul>
+</nav>
+
+
+
+
+

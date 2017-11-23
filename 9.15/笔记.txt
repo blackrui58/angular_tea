@@ -1,0 +1,144 @@
+自定义指令:
+app.directive(指令名,function () {
+	return {
+		restrict: 'ECMA',
+		replace: true,
+		template: 模板字符串,
+		teplateUrl: html文件的路径或者script type="text/ng-template" 的id,
+		link: function (scope,ele,attr) {},
+		scope: 
+			false: 父子作用域完全相同,
+			true: 子作用域继承父作用域,子改变父不改变
+			{}: 父子作用域完全不想
+				a.@,{{}},true
+				b.=,false
+				c.&,方法
+	}
+
+});
+
+服务: $scope  $http  $location $interval $timeout $document $window  就是一个封装的对象; 单例对象
+
+面向对象: 只管使用对象,不管实现
+
+单例: 在应用的生命周期(程序打开到关闭)内,始终只有一个
+
+数据库: 存储数据 修改数据 
+
+A B用的同样的数据库, A修改了数据库的内容,B
+
+自定义服务: 封装; 数据持久化: 保存数据的 ; 封装逻辑;共享数据
+
+$http.get(url).then(function () {})
+url: 接口 wish.php?act=get
+
+控制器的内容越少越好,只负责数据的展示,逻辑性的操作交给服务
+
+自定义服务: 5种方法
+
+工厂模式: 创建一个新的对象,设置对象的属性,return obj;
+构造函数: 在构造函数里面新创建一个对象,然后把对象的值赋值给this,返回this
+
+provider(): 必须实现$get方法
+factory()
+service()
+value()
+constant()
+两种调用方式,一种是通过$provide去调用; 通过模块(app)去调用
+
+服务是由供应商提供的
+
+配置路由;供应商的配置也在config里面
+供应商: 服务的名后面拼接Provider
+app.config()
+
+angular并不是说适用于任意网页,用于一些数据展示性的网页
+
+适用于做SPA: single page application 单页面应用程序 (移动端)
+
+路由: 一个url地址(后面的path)对应一个界面
+
+url地址: http://www.baidu.com/index.html
+
+路由表
+#: 发现音乐  发现音乐的视图     控制器
+#/my: 我的音乐  我的音乐的视图  控制器
+#/friend: 朋友  朋友的视图      控制器
+
+1.下载angular-route这个模块
+2.在注册app的时候得依赖ngRoute
+3.在config里面配置路由表 $routeProvider
+
+$routeProvider.when(path,{templateUrl:,controller: }).when().when().otherwise({redirectTo: '/dinf'})
+
+配合ng-view: 就是可以切换的视图
+
+:id: 在对应的控制器里面有一个$routeParams的服务,可以获取到你写的id值
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

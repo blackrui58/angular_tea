@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.controller('f',['$scope',function ($scope) {
+				// 错误提示信息
+				$scope.message = '';
+				
+				$scope.$watch('v',function (newVal) {
+					console.log(/^[a-z]/.test(newVal))
+					if (newVal == undefined) {	
+					}else if (!/^[a-z]/.test(newVal)) {
+						$scope.message = '必须字母开头';
+					}else if (newVal.length < 6) {
+						$scope.message = '长度至少6个';
+					}else {
+						$scope.message = '';
+					}
+					
+				})
+			}]);
+		</script>
+	</head>
+	<body ng-controller="f">
+		<input type="text" ng-model="v" /> {{message}}
+	</body>
+</html>

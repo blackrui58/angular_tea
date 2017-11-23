@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			// 1.模块名
+			// 2.数组: 需要依赖的模块
+			// 3.可选参数 (配置函数)
+			var app = angular.module('app',[]);
+			
+			
+			// 1.控制器名
+			// 2.函数: 当加载控制器的时候,就会执行这个函数
+			app.controller('firstCtrl',function ($scope) {
+				// 把数据都挂到$scope里面
+				$scope.a = 10;
+				
+			});
+			
+			app.controller('secondCtrl',function ($scope) {
+				// 把数据都挂到$scope里面
+				$scope.a = 20;
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div ng-controller="firstCtrl">
+			轮播图: {{a}}
+		</div>
+		<div ng-controller="secondCtrl">
+			商品信息:{{a}}
+		</div>
+		{{a}}
+	</body>
+</html>

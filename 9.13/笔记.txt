@@ -1,0 +1,229 @@
+指令:
+ng-app: 设置angular的作用范围
+ng-init: 初始化数据
+ng-model: 绑定表单元素的值
+ng-click: 点击
+ng-controller: 设置控制器 (模块设置)
+ng-repeat: 重复执行某些代码(标签)
+ng-if: 移除元素
+ng-show: 显示
+ng-hide: 隐藏
+
+交互:
+$http({url:,params: ,}).then(function (str) {str.data},function () {});
+
+$http.get(url,{params: }).then(function (str) {str.data},function () {});
+
+cb 或者 callback必须是 JSON_CALLBACK
+$http.jsonp().then(function (str) {str.data},function () {});
+
+指令:
+ng-bind: 取消闪烁效果
+ng-class: 设置类名 {类名: true或者false}  直接设置类名: 给类名打上单引号
+
+ng-class-odd: 给奇数行设置类名
+ng-class-even: 给偶数行设置类名
+
+想获取到事件对象,在事件的执行函数里面传入$event参数
+
+在线工具: http://tool.oschina.net/
+
+前面的依赖注入的写法,在进行代码压缩的时候,会把服务的名字给设置为其他的值;字符串不会被压缩
+
+以后控制器的写法：
+app.controller(控制器名,['$scope','$http',function ($scope,$http) {}]);
+
+过滤器: 格式化数据  管道符 (|)   | 过滤器名:参数
+
+过滤数字: number
+	a.对于整数,中间加逗号
+	b.对于小数,默认保留3位小数,并且四舍五入
+	c.参数写数字,代表保留几位小数
+字符串大小写: lowercase uppercase
+
+把对象变为字符串: json
+
+注意: 表达式里面有json对象,应该两边有空格
+
+货币: currency: '¥'
+
+时间: date: 'yyyy-MM-dd hh:mm:ss'
+
+截取: limitTo: 数字
+
+排序: orderBy: 属性名:true (从大到小排序)
+
+过滤: filter: 值  查找出有这个值的数据
+
+自定义过滤器:
+
+app.filter(过滤器名,function () {
+	return function (str) {
+	
+	} 
+})
+首字母大写
+
+指令:
+ng-click/dblclick/keydown/keyup/mouseenter/mousemove/mouseleave/focus/blur/submit
+
+onchange: 内容改变,失去焦点的时候触发
+ng-change:  内容改变就触发(oninput);必须结合ng-model使用
+
+ng-checked: true  false (对应复选框的ng-model)
+
+ng-readonly: true  false  (只读)
+
+ng-disabled: true  false (禁用)
+
+ng-copy: 当复制内容的时候,触发的事件 (选中时也能触发)
+
+ng-cut: 剪切
+
+ng-paste: 粘贴
+
+
+双向数据绑定: 视图改变数据改变,数据改变,视图也变
+
+双向数据绑定的原理: 
+angular的context执行环境: 如果使用angular提供的事件,服务改变的数据,就能触发angular的context执行环境,就能实现数据的双向绑定
+
+强制触发angular的context环境方式: $scope.$apply(function () {
+	数据改变的代码
+})
+
+$timeout(fn,time): 延迟调用的服务
+
+$interval(fn,time): 间歇调用
+
+取消定时器:
+先获取定时器的名字:
+$interval.cancel(名字)
+$timeout.cancel(名字)
+
+观察scope里面的某个值的变化
+$scope.$watch(scope里面的数据,function(新值,旧值) {},是否深度观察)
+
+监听属性变化: 直接属性值,以字符串的形式
+
+监听方法的变化: 直接写$scope.方法名
+
+深度观察(true): 能观察到对象内部值的变化 
+
+$scope:
+$watch
+$digest
+$apply
+dirty-checking: 脏数据检查 (原理) 脏值检查
+<input type="text" ng-model="v" />
+$scope.x = 10;
+<input type="text" ng-model="m" />
+
+0.angular的context环境
+
+1.在angular里面生成两个$watch 观察v 和 m,并且把这两个$watch加入到angular里面的$watch队列(容器)
+
+队列: 先进先出
+
+2.$digest: 循环(for循环),遍历队列
+
+$apply: 强制触发angularcontext执行环境
+
+angular里面的表单验证: 
+
+$valid: 是否通过验证
+$invalid: 是否没有通过验证
+$error: 错误信息 (你设置的验证条件是否满足)
+
+表单和表单元素必须有name属性,表单元素必须有ng-model
+
+验证表单元素是否满足条件:
+ng-minlenth: 最小长度
+ng-maxlength: 最大长度
+ng-pattern: 正则
+required: 必须有值,不能为空
+
+错误信息:
+form的name值.表单元素的name值.$error.ng后面的属性名
+
+表单是否通过验证:
+form的name值.$invalid
+
+$scope: 作用域
+
+控制器可以继承: 子控制器可以使用父控制器的$scope里面的属性和方法
+
+让父控制器里面可以使用子控制器的数据:
+在子控制器里面将数据发射给父控制器
+$scope.$emit('名字',要发射的数据);
+
+在父控制器里面得接收子控制器发射来的数据
+$scope.$on('名字',function(event,data){});
+event: 事件信息
+
+$rootScope: 根作用域 (window)
+
+控制器一般只写$scope,$scope只属于该控制器
+
+自定义指令(dom操作),自定义服务 (相当于前面学js时候的封装函数)  其他指令 
+
+路由
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

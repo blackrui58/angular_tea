@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			// ng-
+			//1.指令名字: 最好不要起ng开头,可能会和angular内置的指令冲突
+			// 2.驼峰标识: 不能写-从第二个单词开始首字母大写
+			app.directive('hyhAb',function () {
+				return {
+					restrict: 'ECMA',
+					template: '<h1>这是自定义指令</h1>',
+					replace: true
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div hyh-ab></div>
+		<div hyh-ab></div>
+		<div hyh-ab></div>
+		<hyh-ab></hyh-ab>
+		<div class="hyh-ab"></div>
+		<!-- directive:hyh-ab -->
+	</body>
+</html>

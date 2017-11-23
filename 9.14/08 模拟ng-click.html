@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.directive('esClick',function () {
+				return {
+					replace: true,
+					link: function (scope,ele,attr) {
+//						console.log(attr.esClick);
+//						var x = attr.esClick; // fun()
+						ele.on('click',function () {
+					// 如果是在指令里面执行方法,将$apply里面的function直接改为attr.esClick				
+							scope.$apply(attr.esClick);
+						});
+					}
+				}
+			});
+			app.controller('f',['$scope',function($scope){
+				$scope.fun = function () {
+					alert(1);
+				}
+				
+				$scope.fun1 = function () {
+					alert(2);
+				}
+			}]);
+		</script>
+	</head>
+	<body ng-controller="f">
+		<button es-click="fun()">点我1</button>
+		<button es-click="fun1()">点我2</button>
+		
+		
+		<button ng-click="fun()">ng-click</button>
+	
+	</body>
+</html>

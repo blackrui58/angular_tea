@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.controller('x',function ($scope) {
+				$scope.change = function () {
+					console.log(1);
+				}
+				$scope.copy = function () {
+					alert('复制了')
+				}
+			});
+		</script>
+	</head>
+	<body ng-controller="x">
+		<input type="text" ng-model="v" ng-change="change()" />
+		
+		<input type="checkbox" ng-change="change()" ng-model="v" />
+		
+		<select  ng-model="v" ng-change="change()">
+			<option value="w">1</option>
+			<option value="e">2</option>
+		</select>
+		<input type="checkbox" ng-checked="false" />
+		
+		<input type="text" ng-readonly="false" ng-disabled="false" />
+		
+		<input type="text" ng-copy="copy()" /><br />
+		<input type="text" ng-cut="copy()" />
+		
+		<input type="text" ng-paste="copy()" />
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			li {
+				width: 200px;
+				height: 200px;
+				background: #ccc;
+				float: left;
+				margin: 20px;
+			}
+			.active {
+				background: red;
+			}
+		</style>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.controller('first',function ($scope) {
+				$scope.arr = [1,2,3,4,5,6];
+				$scope.index = -1;
+				$scope.show = function (a){
+//					console.log(a)
+					$scope.index = a;
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<ul ng-controller="first">
+			<li ng-repeat="x in arr" ng-click="show($index)" ng-class="{active: $index == index}">{{x}}</li>
+		</ul>
+	</body>
+</html>

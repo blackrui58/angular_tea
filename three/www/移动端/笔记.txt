@@ -1,0 +1,106 @@
+PC端
+移动端开发: 
+
+布局
+PC: 有的时候需要兼容IE低版本
+
+移动端: 只需要兼容浏览器内核为webkit的浏览器: chrome  safria
+
+兼容各种手机尺寸:
+
+iphone5s ,se : 320 * 568  (4.0尺寸)
+iphone6,6s,7 : 375 * 667  (4.7尺寸)
+iphone6P: 414 * 736       (5.5尺寸)
+
+安卓: 小米 华为 vivo opp  三星  锤子...... (320 - 640)
+
+box-sizing: 
+content-box: 边框线和padding会加大盒子
+border-box: 不会加大盒子,往里面挤
+
+calc(计算的式子)
+
+弹性盒子: flex布局
+1.给父盒子设置display: flex;
+2.给子盒子设置弹性系数: flex: 弹性系数,该子元素占父元素的几分
+
+特点:
+1.使元素排成一行显示 (不需要再用float)
+2.父元素占位置
+3.可以使行内元素设置宽高
+4.如果子元素设置了宽,那么会把该宽刨去,再按比例进行分配宽
+
+flex深入:
+设置盒子水平方向的排列:
+justify-content:
+flex-start: 居左显示
+flex-end: 局右显示
+center: 居中显示
+space-between: 两端对齐,平分父盒子宽,每个盒子间隔相等
+space-around: 两端对齐,左右也有间隙,平分父盒子宽,每个盒子间隔相等
+
+设置盒子垂直方向的排列:
+align-items:
+flex-start
+flex-end
+center
+
+PC分辨率: 980
+
+视口:
+<meta name="viewport"  content="width=320">
+
+width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0
+
+initial-scale: 初始化缩放倍数 1.0
+user-scalable: 是否允许用户缩放 0或者no
+maximum-scale: 最大的缩放比例 1.0
+华为 Mata-8
+
+不允许用户进行缩放
+
+布局方式:
+1.定宽布局: 当尺寸大于320的时候,会留白
+2.流体布局(百分比布局): 程序员没有面子,没有办法100%还原设计图
+
+3.相对单位布局: rem  vw vh
+
+vw: view width,视口宽
+
+1vw = 视口宽 * 0.01 px  
+1vw = 3.2px
+10vw = 32px
+
+vh: view  height,视口高
+
+1vh = 视口高 * 0.01
+
+em: 一个字体的大小,相对于父元素来说
+
+rem: rootElement em: 相对于根元素的font-size来说
+
+移动端的图纸:
+5: 320 * 568    2倍图: 640 * 1136
+6: 374 * 667
+
+
+使用rem写移动端,以20为参考:
+1.给html 设置font-size: 6.25vw
+2.在ps里面测量出px值,除以2 (px)
+3.转化为rem: 除以20
+
+总结: 把测量的px值 / 40 就是最后的rem值
+
+使用rem写移动端,以100为参考:
+1.给html 设置font-size:  15.625vw
+
+2.转化为rem: 除以100
+
+总结: 把测量的px值 / 100 就是最后的rem值
+
+插件安装:
+http://www.cnblogs.com/softwarefang/p/6094757.html
+
+swiper: 移动端的轮播
+
+下载swiper: npm

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script src="angular-route.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 路由模块
+			var app = angular.module('app',['ngRoute']);
+			
+			//配置路由表
+			app.config(function ($routeProvider) {
+				// path  对象：视图 控制器
+				$routeProvider.when('find',{
+//					template: '<h1>这是发现音乐</h1>'
+					templateUrl: 'find.html',
+					controller: 'first'
+				}).when('/my',{
+					template: '<h1>这是我的音乐</h1>'
+				}).when('/friend',{
+					template: '<h1>这是朋友界面</h1>'
+				}).otherwise({redirectTo: '/find'})
+				// 重定向：直接将url地址改变
+			});
+			
+			app.controller('first',['$scope',function ($scope) {
+				$scope.find = '这是find';
+			}]);
+			
+		</script>
+	</head>
+	<body>
+		<ng-view></ng-view>
+		<a href="#/find">发现音乐</a>
+		<a href="#/my">我的音乐</a>
+		<a href="#/friend">朋友</a>
+		
+		
+		
+	</body>
+</html>

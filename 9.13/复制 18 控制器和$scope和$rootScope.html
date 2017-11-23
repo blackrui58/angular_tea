@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.controller('box',['$scope',function ($scope) {
+				// 接收数据
+				$scope.$on('ab',function (event,data) {
+					$scope.b = data;
+				});
+			}]);
+			app.controller('box1',['$scope','$rootScope',function ($scope,$rootScope) {
+				$scope.b = '这是box1的数据';
+				$rootScope.d = '这是rootScope的数据'
+				
+				// 发射数据
+				$scope.$emit('ab',$scope.b);
+				
+			}]);
+			app.controller('box2',['$scope',function ($scope) {
+				$scope.c = '这是box2的数据';
+			}]);
+		</script>
+	</head>
+	<body>
+		<div ng-controller="box">
+			{{a}} {{b}}
+			<div ng-controller="box1">{{a}}{{b}}{{d}}</div>
+			<div ng-controller="box2">{{a}}{{c}}</div>
+		</div>
+		{{d}}
+	</body>
+</html>

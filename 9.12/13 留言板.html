@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="apps">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('apps',[]);
+			app.controller('first',function ($scope){
+				console.log($scope)
+//				$scope.v = '1234';
+				$scope.data = [];
+				// 添加
+				$scope.add = function () {
+//					$scope.data.push($scope.v);
+					$scope.data.unshift($scope.v);
+					$scope.v = '';
+				}
+				//删除
+				$scope.delete = function (a) {
+//					$scope.data.splice(下标,删除个数);
+					$scope.data.splice(a,1);
+				}
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div ng-controller="first">
+			<input type="text" ng-model="v" />
+			<button ng-click="add()">添加</button>
+			<h1 ng-if="data.length == 0">暂无留言</h1>
+			<ul>
+				<li ng-repeat="x in data track by $index" >{{x}} <a href="#"  ng-click="delete($index)">删除</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

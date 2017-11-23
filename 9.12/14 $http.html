@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			// 创建模块
+			var app = angular.module('app',[]);
+			app.controller('f',function ($http,$scope) {
+				$scope.data = [];
+				// http
+				$scope.http = function () {
+					//$http 函数
+					$http({
+						url: 'get.json',
+						method: 'GET',
+						params: {}// ?后面的参数
+					}).then(function(str){
+						// 数据请求成功
+						console.log(str);
+						$scope.data = str.data;
+					},function(){
+						//失败
+					});
+					
+				}
+				//get请求
+				$scope.get = function (){
+					$http.get('get.json',{
+							params: {a: 1,b: 2}
+						}).then(function (str) {
+						console.log(str);
+						$scope.data = str.data;
+					});
+				}
+				// jsonp
+				$scope.jsonp = function () {
+					$http.jsonp('https://sug.so.360.cn/suggest?callback=JSON_CALLBACK&word=a').then(function (str) {
+//						console.log(str.data.s);
+						$scope.data = str.data.s;
+					});
+				}
+			});
+		</script>
+	</head>
+	<body ng-controller="f">
+		<button ng-click="get()">请求数据</button>
+		<button ng-click="jsonp()">jsonp</button>
+		<ul>
+			<li ng-repeat="item in data">{{item}}</li>
+		</ul>
+	</body>
+</html>

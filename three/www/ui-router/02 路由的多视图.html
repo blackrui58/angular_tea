@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	a.active {
+		color: orange;
+	}
+	a.on {
+		color: red;
+	}
+	</style>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="angular-ui-router.js"></script>
+	<script type="text/javascript">
+	var app = angular.module('app',['ui.router']);
+
+	app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
+		$stateProvider.state('find',{
+			url: '/a',
+			views: {
+				a: {
+					template: '<h1>这是a的</h1>'
+				},
+				b: {
+					template: '<h1>这是b的</h1>'
+				},
+				c: {
+					template: '<h1>这是c的</h1>'
+				},
+			}
+		}).state('my',{
+			views: {
+				a: {
+					template: '<h1>这是a的</h1>'
+				},
+				b: {
+					template: '<h1>这是b的</h1>'
+				},
+				c: {
+					template: '<h1>这是c的</h1>'
+				},
+			}
+		}).state('friend',{
+			views: {
+				a: {
+					template: '<h1>这是a的</h1>'
+				},
+				b: {
+					template: '<h1>这是b的</h1>'
+				},
+				c: {
+					template: '<h1>这是c的</h1>'
+				},
+			}
+		});
+
+	}]);
+	
+	</script>
+</head>
+<body>
+	<h1>sadasd</h1>
+	<div>
+		<a ui-sref="find" ui-sref-active="active">发现音乐</a>
+		<a ui-sref="my" ui-sref-active="active">我的音乐</a>
+		<a ui-sref="friend" ui-sref-active="active">朋友</a>
+	</div>
+	<div ui-view="a"></div>
+	<div ui-view="b"></div>
+	<div ui-view="c"></div>
+</body>
+</html>

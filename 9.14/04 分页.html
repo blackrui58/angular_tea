@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap.css" />
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.directive('ezPage',function () {
+				return {
+					restrict: 'AE',
+					replace: true,
+//					template: '<div><h1>123</h1><h2>1234</h2></div>'
+//					templateUrl: '分页.html'
+					templateUrl: 'aaa'
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<script type="text/ng-template" id="aaa">
+			<h1>这是script标签里面的模板</h1>
+		</script>
+		<!--分页1-->
+		<ez-page></ez-page>
+		<!--分页2-->
+		<ez-page></ez-page>
+		
+		<!--分页3-->
+		
+		<ez-page></ez-page>
+		<ez-page></ez-page>
+		<ez-page></ez-page>
+		<ez-page></ez-page>
+		<ez-page></ez-page>
+	</body>
+</html>

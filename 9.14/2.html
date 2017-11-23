@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+		</style>
+		
+			
+		</script>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+			app.controller('x',function ($scope){
+				$scope.a = 10;
+			});
+			
+			app.directive('s',function(){
+				return {
+					replace: true,
+					template: '<div>子作用域：<input type="text" ng-model="a" /></div>',
+					link: function (scope,ele,attr){
+						scope.a = 20;
+					}
+				}
+			});
+		</script>
+	</head>
+	<body ng-controller="x">
+		父作用域：<input type="text" ng-model="a" />
+		<s></s>
+	</body>
+</html>

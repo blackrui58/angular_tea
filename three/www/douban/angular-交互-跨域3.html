@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社—http://www.zhinengshe.com</title>
+    <style>
+
+    </style>
+    <script src="angular.js"></script>
+    <script>
+
+        var app=angular.module('app',[]);
+
+        app.controller('test',function($scope,$http){
+            $scope.data=[];
+            $scope.t1='';
+
+            $scope.$watch('t1',function() {
+
+                $http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + $scope.t1 + '&cb=JSON_CALLBACK').success(function (data) {
+                    $scope.data = data.s;
+
+                });
+            });
+        });
+    </script>
+</head>
+<body ng-controller="test">
+<input type="text" ng-model="t1">
+<ul>
+    <li ng-repeat="item in data">{{item}}</li>
+</ul>
+</body>
+</html>
+
+
+
+

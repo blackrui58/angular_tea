@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			 div {
+			 	width: 200px;
+			 	height: 200px;
+			 	background: #ccc;
+			 	position: absolute;
+			 }
+		</style>
+		<script type="text/javascript" src="jquery-3.2.1.js">
+		</script>
+		<script type="text/javascript">
+			$(function () {
+				$('div').on('mousedown',function (evt) {
+					var x = evt.clientX - $('div').offset().left;
+					var y = evt.clientY - $('div').offset().top;
+					
+					function move (evt) {
+						var l = evt.clientX - x;
+						var t = evt.clientY - y;
+						
+						$('div').css({left: l,top: t});
+					}
+					
+					$(document).on('mousemove',move);
+					
+					$(document).on('mouseup',function () {
+						// 移除移动事件
+						$(document).off('mousemove');
+					});
+				});
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<h1>1231231</h1>
+	</body>
+</html>

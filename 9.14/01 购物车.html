@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+	var app = angular.module('app',[]);
+
+	app.controller('f',['$scope',function ($scope) {
+		$scope.arr = [{name: '胡萝卜',count: 3,price: 12},{name: '黄瓜',count: 2,price: 4},{name: '茄子',count: 3,price: 2},{name: '玉米棒子',count: 3,price: 1}];
+		// 运费
+		$scope.yunfei = 10;
+
+		$scope.sum = function () {
+			// 把总价格返回出去
+			var pSum = 0;
+			//遍历数组
+			angular.forEach($scope.arr,function (ele) {
+				pSum += ele.price * ele.count;
+			});
+			return pSum;
+		}
+		$scope.$watch($scope.sum,function (newVal) {
+			if (newVal >= 100) {
+				$scope.yunfei = 0;
+			} else {
+				$scope.yunfei = 10;
+			}
+		});
+	}]);
+	</script>
+</head>
+<body ng-controller="f">
+	<dl ng-repeat="x in arr">
+		<dt>名称:{{x.name}}</dt>
+		<dd>价格:{{x.price | currency}}</dd>
+		<dd>数量: <input type="number" ng-model="x.count"></dd>
+		<dd>总价:{{x.price * x.count | currency}}</dd>
+	</dl>
+	<div>运费:{{yunfei | currency}}</div>
+	<h2>小计: {{sum() + yunfei | currency}}</h2>
+</body>
+</html>

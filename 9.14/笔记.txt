@@ -1,0 +1,130 @@
+过滤器:
+number date lowercase uppercase currency json orderBy filter limitTo
+
+自定义过滤器: app.filter(过滤器名,function () {
+	return function (过滤的数据,冒号后面的参数) {}
+})
+
+指令:
+ng-click/dblclick mousedown mouseup  submit change(ng-model)
+
+表单验证:
+1.表单和表单元素必须有name属性
+2.表单元素得绑定ng-model
+3.ng-minlength maxlength pattern required
+4.$error
+
+form的name.表单元素的name.$error.ng后面的属性
+
+form的name.$invalid
+
+双向数据绑定的原理: 脏值检查(dirty-checking)
+0.必须在angular的context执行环境
+1.绑定几个数据生成几个$watch,再把$watch加入$watch队列(容器)
+2.$digest: 循环$watch队列
+
+$apply: 强制触发angular的context环境
+
+ng-class: {类名: true或者false}
+
+1.5以后
+交互:
+$http({url: ,method: ,params: {}}).then(function () {},function () {});
+
+
+$http.get(url,{params: {}}).then(function (str) {},function () {})
+
+1.3-1.5: 1.5以后抛弃,使用then来代替
+$http({url: ,method: ,params: {}}).success(function () {}).error(function(){});
+$http.get(url,{params: {}}).success(function (){}).error(function () {})
+
+
+自定义指令 (ng-)
+内置指令: 扩展DOM (事件的添加)
+
+重复利用(重复使用)  相当于写组件
+
+分页效果
+
+app.directive(指令的名字,function (){
+	return {
+		restrict: ,指令能在什么地方使用,
+		模板
+		template: 
+	};该对象是对自定义指令的一些配置
+})
+
+restrict: 默认值是EA
+E: element,标签
+C: class,类名
+M: ,注释
+A: attribute,属性
+
+模板: 当你使用指令的时候,显示出来的视图
+
+replace: true隐藏指令名
+
+templateUrl: url地址 (当模板内容特别多的时候使用)
+
+ng-transclude: 用于在模板中占位置,放置指令作为标签使用的时候,覆盖掉指令标签里面的内容,需要结合transclude属性使用
+transclude: true
+
+link: function () {}
+
+bootstrap: 框架   css框架: 样式  组件(√)  插件
+
+
+模板必须有一个根元素
+
+指令的执行机制:
+加载阶段: 加载angular.js,找到ng-app,确定 边界
+编译阶段: 遍历DOM,找到所有的指令,根据指令里面的template,temlateUrl,转化为DOM,显示内容
+链接阶段: DOM已经生成完毕,一般在此处操作DOM
+
+link: function (scope,ele,attr) {
+scope: 代表指令的作用域
+ele: 使用了该指令的元素 (jqLite对象: 小型的jq对象)
+attr: 指令的属性
+
+}
+
+$location: 相当于js里面的location
+$document: 相当于js里面的document (jqLite对象)
+$window: 相当于js里面的window
+
+自定义指令一经使用，立马执行link函数，里面的ele才是我们做dom操作的重点
+
+
+compile里面返回了两个函数,一个叫做preLink,另外一个叫做postLink函数
+link里面返回了一个函数,就是postLink
+
+一般写自定义指令不写compile,写了以后,link函数不执行
+
+自定义指令的作用域:
+子作用域: 该指令范围内的作用域
+父作用域: 包含该指令的作用域
+
+scope: 设置父子作用域
+false: 父子作用域完全相同,父子作用域里面的数据无论哪个改变,整体都变
+true: 子作用域继承父作用域,子改变父不改变
+{}: 父子作用域完全不相干
+
+scope的绑定策略:
+绑定的是父作用域的属性
+@绑定: 在用属性进行传递值的时候,得用{{父作用域的数据}},,相当于scope: true
+
+=绑定: 相当于scope为false的时候,不需要{{}}
+
+绑定的是父作用域的方法
+
+&绑定: 绑定方法,让子作用域可以使用父作用域的方法
+
+
+数据的检测机制: 查看数据: console.log(数据)  alert(数据)
+
+当自定义指令在用属性进行传递数据的时候,如果属性名 = 你要使用的数据的名字,可以直接简写为@ = &
+
+用的多的是=绑定
+
+
+自定义服务  路由

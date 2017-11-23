@@ -1,0 +1,133 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+<meta charset="utf-8">
+<script src="../jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="./Css/index.css" />
+	
+<script src="../angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module('app',[]);
+    app.directive('esDrag',function ($document) {
+//				console.log($document)
+				return  {
+					restrict: 'A',
+					link: function (scope,ele,attr) {
+						// 转化为jq对象
+						ele = $(ele);
+						ele.css('position','absolute');
+						ele.css({left: Math.random() * 100,top: Math.random() * 100 })
+						ele.on('mousedown',function (evt) {
+						var x = evt.clientX - ele.offset().left;
+						var y = evt.clientY - ele.offset().top;
+						
+						function move (evt) {
+							var l = evt.clientX - x;
+							var t = evt.clientY - y - ele.parent().offset().top;
+							
+							ele.css({left: l,top: t});
+						}
+						
+						$document.on('mousemove',move);
+						
+						$document.on('mouseup',function () {
+							// 移除移动事件
+							$document.off('mousemove');
+						});
+						return false;
+					});
+					}
+				}
+			});
+    app.controller('f',['$scope','$http',function ($scope,$http) {
+        //数据数组
+        $scope.data = [];
+        // 显示发送的框
+        $scope.isShow = false;
+        // 发送数据
+        $scope.getData = function () {
+            //wish.php?act=add&username=xxx&content=xxx
+            $http.get('wish.php',{
+                params: {act: 'add',username: $scope.username,content: $scope.content}
+            }).then(function (str) {
+                alert(str.data.msg);
+                // 获取所有数据
+                $scope.getAllWish();
+                $scope.isShow = false;
+                $scope.username = '';
+                $scope.content = '';
+            });
+        }
+        $scope.getAllWish = function () {
+            // 获取所有数据
+            $http.get('wish.php?act=get').then(function (str) {
+                var json = str.data;
+                if (json.error) {
+                    alert(json.msg);
+                } else {
+                    // 数据正确的
+                    $scope.data = json.msg;
+                }
+            });
+        }
+        // 先获取所有数据
+        $scope.getAllWish();
+
+    }]);
+</script>
+
+</head>
+<body ng-controller="f">
+<div id='top'>
+    <span id='send' ng-click="isShow=true"></span>
+</div>
+<div id='main'>
+    <dl class='paper a1' ng-repeat="x in data" es-drag>
+        <dt>
+            <span class='username'>{{x.username}}</span>
+            <span class='num'>{{x.id}}</span>
+        </dt>
+        <dd class='content'>{{x.content}}</dd>
+        <dd class='bottom'>
+            <span class='time'>{{x.time * 1000 | date}}</span>
+            <a href="" class='close'></a>
+        </dd>
+    </dl>
+</div>
+
+<div id="layer"></div>
+
+<div id='send-form' style="z-index:2147483647;" ng-show="isShow">
+    <p class='title'><span>许下你的愿望</span><a href="javascript:;" id='close' ng-click="isShow=false"></a></p>
+    <form action="" name='wish'>
+        <p>
+            <label for="username">昵称：</label>
+            <input type="text" name='username' id='username' ng-model="username"/>
+        </p>
+        <p>
+            <label for="content">愿望：(您还可以输入&nbsp;<span id='font-num'>50</span>&nbsp;个字)</label>
+            <textarea name="content" id='content' ng-model="content"></textarea>
+            <div id='phiz'>
+                <img src="./Images/phiz/zhuakuang.gif" alt="抓狂" />
+                <img src="./Images/phiz/baobao.gif" alt="抱抱" />
+                <img src="./Images/phiz/haixiu.gif" alt="害羞" />
+                <img src="./Images/phiz/ku.gif" alt="酷" />
+                <img src="./Images/phiz/xixi.gif" alt="嘻嘻" />
+                <img src="./Images/phiz/taikaixin.gif" alt="太开心" />
+                <img src="./Images/phiz/touxiao.gif" alt="偷笑" />
+                <img src="./Images/phiz/qian.gif" alt="钱" />
+                <img src="./Images/phiz/huaxin.gif" alt="花心" />
+                <img src="./Images/phiz/jiyan.gif" alt="挤眼" />
+            </div>
+        </p>
+        <span id='send-btn' ng-click="getData()"></span>
+    </form>
+</div>
+<!--[if IE 6]>
+<script type="text/javascript" src="./Js/iepng.js"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('#send,#close,.close','background');
+</script>
+<![endif]-->
+</body>
+</html>

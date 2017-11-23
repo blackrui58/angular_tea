@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+			app.controller('f',['$scope',function ($scope) {
+				$scope.bb = 'abc';
+				$scope.cc = '123';
+				
+				$scope.fun = function () {
+					alert(1);
+				}
+			}]);
+			
+			app.directive('s',function () {
+				
+				return {
+					restrict: 'ECMA',
+					replace: true,
+					template: '<div>子作用域: <input type="text" ng-model="ww" /> <input type="text" ng-model="xx" />{{funs()}}</div>',
+					link: function (scope) {
+						
+					},
+					scope: {
+						ww: '@',
+						xx: '=tt',
+//						funs: '&oo'
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div ng-controller="f">
+			父作用域: <input type="text" ng-model="a" /> <input type="text" ng-model="bb" />
+				<!--{{fun()}}-->
+			<s ww="{{a}}" tt="bb" oo="fun()"></s>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+.footer li i{display:block;width:0.58rem;height:0.57rem;background:url(../images/icon.png) no-repeat 0 -0.59rem;background-size:4rem;}
+.footer li .icon2{background-position:-0.63rem 0;}
+.footer li .icon3{background-position:-1.27rem -0.57rem;}
+.footer li .icon4{background-position:-1.89rem 0;}
+.footer li .icon5{background-position:-2.51rem 0;}
+/*尾部第一个*/
+.footer .icon1{background-position:0 0;}
+.yuer-footer .icon2{background-position:-0.64rem -0.58rem!important;margin-top:0;}
+.xiaoxi-footer .icon4{background-position:-1.87rem -0.59rem!important;}
+.wo-footer .icon5{background-position:-2.52rem -0.56rem!important;}
+.footer li .icon3{background-position:-1.26rem 0;}

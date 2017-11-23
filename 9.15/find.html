@@ -1,0 +1,13 @@
+
+<!--<a href="#p=1" >1</a>
+<a href="#p=2" >2</a>
+<a href="#p=3" >3</a>
+<a href="#p=4" >4</a>
+<a href="#p=5">5</a>-->
+
+<!--<a ng-repeat="x in arr" href="#p={{x}}">{{x}} </a>-->
+
+<!-- 没有使用href进行跳转,自己添加ng-click,调用updateParams方法进行路由的跳转 -->
+<a href="javascript:;" ng-repeat="x in arr track by $index" ng-click="changeIndex($index+1)">{{$index + 1}} </a>
+
+这是第{{index}}页

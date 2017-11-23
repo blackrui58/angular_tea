@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.directive('s',function () {
+				return {
+					compile: function () {
+						console.log('compile执行了')
+					},
+					link: function () {
+						console.log('Link 执行了');
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div s></div>
+	</body>
+</html>

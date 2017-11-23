@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+			app.controller('f',['$scope',function ($scope) {
+				$scope.arr1 = [1,2,3,4,5];
+			}]);
+			app.controller('s',['$scope',function ($scope) {
+				$scope.arr2 = [1,2,3,4,5,6,7,8];
+			}]);
+			// 你使用指令的时候,传递s属性既可
+			app.directive('esAaa',function () {
+				return {
+					restrict: 'ECMA',
+					replace: true,
+					templateUrl: '分页.html',
+					link: function (scope,ele,attr) {
+//						console.log(attr.s);
+						// 1.attr.s取到是字符串-->数组
+						var json = angular.fromJson(attr.s);
+						scope.arr = json;
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<!-- 分页1: 5 -->
+		<div ng-controller="f">
+			<es-aaa s="{{arr1}}"></es-aaa>
+		</div>
+		
+		<!-- 分页2: 8 -->
+		<div ng-controller="s">
+			<es-aaa s="{{arr2}}"></es-aaa>
+		</div>
+		
+	</body>
+</html>

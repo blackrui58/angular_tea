@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			//链式操作
+			// 注册了模块
+			// 2.模块的依赖模块
+			var app = angular.module('app',[]);
+			
+			// 获取模块: angular.module('app') == app
+			app.controller('f',['$scope','$interval',function ($scope,$interval) {
+				$scope.time = 10;
+				
+				var timer = $interval(function () {
+					$scope.time--;
+					if ($scope.time == 0) {
+						// 停止定时器
+						$interval.cancel(timer);
+					}
+				},1000);
+				
+			}])
+		</script>
+	</head>
+	<body ng-controller="f">
+		<!--<h1 ng-click="a = 10">改变a的值</h1>-->
+		<h1 ng-bind="time"></h1>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+			app.controller('f',['$scope','$http',function ($scope,$http){$scope.s = 10;}])
+		</script>
+	</head>
+	<body ng-controller="f">
+		{{s}}
+	</body>
+</html>

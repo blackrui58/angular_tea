@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			// 运行: 执行控制器方法前面
+			// 初始化全局数据
+			app.run(['$rootScope',function ($rootScope) {
+				$rootScope.b = '10';
+			}]);
+			app.controller('f',['$scope',function ($scope) {
+				$scope.a = '默认值';
+			}]);
+		</script>
+	</head>
+	<body>
+		<div ng-controller="f">
+			<h1 ng-click="b=30">点击</h1> {{b}}
+		</div>
+		{{b}}
+	</body>
+</html>

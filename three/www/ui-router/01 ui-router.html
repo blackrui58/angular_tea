@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	a.active {
+		color: orange;
+	}
+	a.on {
+		color: red;
+	}
+	</style>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="angular-ui-router.js"></script>
+	<script type="text/javascript">
+	var app = angular.module('app',['ui.router']);
+
+	// 配置路由
+	app.config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
+		$stateProvider.state('find',{
+			url: '/find',
+			// template: '<h1>这是发现音乐{{ss}}</h1>',
+			templateUrl: 'test.html',
+			controller: function ($scope,$state) {
+				$scope.ss = 'xxxx';
+				// 更新路由 (状态)
+				$state.go('find.tuijian',{id: 3});
+			}
+		}).state('my',{
+			// url: '/my/:id',
+			url: '/my/{id}',
+			template: '<h1>这是我的音乐{{ss}}</h1>',
+			controller: function ($scope) {
+				$scope.ss = 'xxxx';
+			}
+		}).state('friend',{
+			url: '/friend',
+			template: '<h1>这是朋友{{ss}}</h1>',
+			controller: function ($scope) {
+				$scope.ss = 'xxxx';
+			}
+		}).state('find.tuijian',{
+			// 父状态名.子状态名
+			url: '/tuijian/:id',
+			// template: '<h1>推荐</h1>',
+			templateUrl: 'test1.html',
+			controller: function ($scope,$stateParams) {
+				$scope.ss = 'xxxx';
+				console.log($stateParams)
+			}
+		}).state('paihang',{
+			// 父状态名.子状态名
+			url: '/paihang',
+			parent:'find',// 指定了该状态的父状态,写状态的时候,不需要再写父状态.的形式
+			template: '<h1>排行版</h1>',
+			controller: function ($scope) {
+				$scope.ss = 'xxxx';
+			}
+		}).state('find.gedan',{
+			// 父状态名.子状态名
+			url: '/gedan',
+			template: '<h1>gedan</h1>',
+			controller: function ($scope) {
+				$scope.ss = 'xxxx';
+			}
+		})
+		//重定向
+		$urlRouterProvider.otherwise('/find');
+
+	}]);
+	</script>
+</head>
+<body>
+	<h1>sadasd</h1>
+	<div>
+		<a ui-sref="find" ui-sref-active="active">发现音乐</a>
+		<a ui-sref="my({id: 10})" ui-sref-active="active">我的音乐</a>
+		<a ui-sref="friend" ui-sref-active="active">朋友</a>
+	</div>
+	<ui-view></ui-view>
+</body>
+</html>

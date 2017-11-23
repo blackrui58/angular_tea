@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.directive('esClick',function () {
+				return {
+					replace: true,
+					link: function (scope,ele,attr) {
+						scope.w = 10;
+//						console.log(ele);
+						ele.on('click',function () {
+//							alert(2);
+							// 要在添加的事件里面改变数据,应该强制触发context环境
+							scope.$apply(function () {
+								scope.w = 20;
+							});
+						});
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<button es-click>点我</button>
+		{{w}}
+	
+	</body>
+</html>

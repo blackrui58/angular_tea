@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+//			app.run();
+			
+			//配置方法: 运行在controller之前
+			app.config(function (workerProvider,studentProvider) {
+				console.log(studentProvider);
+			});
+			
+			app.controller('f',['$scope','person','worker','bbb','student',function ($scope,person,worker,bbb,student) {
+				console.log(worker);
+			}]);
+			
+			app.controller('s',['$scope','aaa','student',function ($scope,aaa,student) {
+				aaa = 10;
+				console.log(aaa+'v2/movie/subject/1764796');
+			}]);
+			
+			
+			// provider
+			app.provider('worker',function () {
+				// 一定要有$get方法,返回的对象就在$get方法里面
+				this.$get = function () {
+					var  stu = {
+						name: 'worker'
+					}
+					return stu;
+				}
+			});
+			
+			
+			// 学生信息的服务
+			app.factory('student',function () {
+				console.log(1);
+				var  stu = {
+					name: 'zs'
+				}
+				return stu;
+			});
+			
+			// service
+			app.service('person',function () {
+				this.name = 'lisi';
+				
+				this.getData = function () {
+					// 发送数据请求
+				}
+			});
+			
+			// value
+			app.value('aaa','https://api.douban.com');
+			// constant: 常量,保存的值不能修改
+			app.constant('bbb','https://api.douban.com');
+		</script>
+	</head>
+	<body >
+		<div ng-controller="f"></div>
+		<div ng-controller="s"></div>
+	</body>
+</html>

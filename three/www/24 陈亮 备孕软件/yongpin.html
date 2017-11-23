@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>孕贝</title>
+	<link rel="stylesheet" href="css/global.css">
+	 <link rel="stylesheet" href="css/swiper.min.css">
+     <style>
+        .swiper-container{width:100%;height:4rem;margin-bottom:0.17rem;}
+     </style>
+</head>
+<body class="bg">
+	<header><i></i><a href="sousuo.html"><input type="text" placeholder="童书"></a><a href="gouwu.html" class="gouwu"></a></header>
+    <div class="nav">
+        <a href="maimai.html">特卖</a>
+        <a href="">童装童鞋</a>
+        <a href="tushu.html">图书玩具</a>
+        <a href="yongpin.html" class="current">孕婴用品</a>
+        <a href="haiwai.html">海外</a>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href=""><img src="images/tu14.jpg"></a></div>
+            <div class="swiper-slide"><a href=""><img src="images/tu14.jpg"></a></div>
+            <div class="swiper-slide"><a href=""><img src="images/tu14.jpg"></a></div>
+            <div class="swiper-slide"><a href=""><img src="images/tu14.jpg"></a></div>
+        </div>
+    </div>
+    <div class="book yongpin">
+        <a href=""><img src="images/tu15.jpg"></a>
+        <a href=""><img src="images/tu16.jpg"></a>
+        <a href=""><img src="images/tu17.jpg"></a>
+        <a href=""><img src="images/tu18.jpg"></a>
+    </div>
+
+    <dl class="time book-con yongpin-con">
+        <h3><a href="">大牌推荐</a></h3>
+        <h4></h4>
+        <dt><a href=""><img src="images/tu19.jpg"></a></dt>
+        <dd>
+            <a href=""><img src="images/tu20.jpg"></a>
+            <a href=""><img src="images/tu21.jpg"></a>
+        </dd>
+    </dl>
+    <div class="yongpin-con2">
+        <a href=""><img src="images/tu22.jpg"></a>
+    </div>
+    <ul class="footer">
+        <li><a href="beiyun.html">
+            <i></i>
+            <p>备孕</p>
+        </a></li>
+        <li><a href="yuer.html">
+            <i class="icon2"></i>
+            <p>育儿</p>
+        </a></li>
+        <li><a href="maimai.html">
+            <i class="icon3"></i>
+            <p class="red">买买</p>
+        </a></li>
+        <li><a href="xiaoxi.html">
+            <i class="icon4"></i>
+            <p>消息</p>
+        </a></li>
+        <li><a href="wode.html">
+            <i class="icon5"></i>
+            <p>我的</p>
+        </a></li>
+    </ul>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 100,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+    });
+    </script>
+</body>
+</html>

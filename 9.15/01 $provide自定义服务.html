@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			// 配置函数
+			var app = angular.module('app',[],function ($provide){
+				// 工厂
+				// 服务的名字: 最好不要$开头
+				$provide.factory('student',function () {
+					var stu = {
+						name: '张三',
+						age: 20,
+						eat: function () {
+							alert('吃饭了');
+						}
+					};
+					return stu;
+				});
+			});
+			
+			app.controller('f',['student','$scope',function (student,$scope) {
+				student.name = 'lisi';
+				$scope.name = student.name;
+				console.log(student);
+			}]);
+			
+			app.controller('s',['student','$scope',function (student,$scope) {
+				$scope.name = student.name;
+				console.log(student);
+			}]);
+		</script>
+	</head>
+	<body>
+		<div ng-controller="f">
+			{{name}}
+		</div>
+		
+		<div ng-controller="s">
+			{{name}}
+		</div>
+		
+	</body>
+</html>

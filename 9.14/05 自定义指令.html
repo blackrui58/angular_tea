@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			
+			app.directive('esAaa',function (){
+				return {
+					restrict:'AE',
+					replace: true,
+					template: '<div><div ng-transclude></div><h1>这是自定义的内容</h1></div>',
+					transclude: true
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<es-aaa><h2>这是指令里面的内容</h2></es-aaa>
+	</body>
+</html>
