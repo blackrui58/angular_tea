@@ -1,0 +1,31 @@
+.hcb-form {
+	width: 100%
+}
+.hcb-form .hcb-msg {
+	font-size:32px; 
+	font-family: '楷体'；
+}
+.hcb-form .msg-content {
+	margin-top: 20px;
+	width: 100%;
+}
+.hcb-form .msg-content span {
+	font: bold 16px '楷体';
+	padding-right:10px;
+}
+.hcb-form .msg-content input {
+	width:500px;
+	height: 30px;
+	border:1px solid #ccc;
+	border-radius: 4px;
+}
+.hcb-form .msg-content button {
+	width:80px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+	outline: none;
+}

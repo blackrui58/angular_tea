@@ -1,0 +1,25 @@
+
+<div class="lg-container">
+		<h1>修改密码</h1>
+		<form id="lg-form" name="lg-form" method="post" ng-submit="submit2()" name="t_form">
+			
+			<div>
+				<input type="password" name="username" id="username" placeholder="原密码" ng-model="a" ng-blur="blur1()"/>
+			</div>
+			
+			<div>
+				<input type="password" name="password" id="pwd" placeholder="新密码" ng-model="b" ng-blur="blur2()"/>
+			</div>
+
+			<div>
+				<input type="password" name="password" id="repwd" placeholder="重复密码" ng-model="c" ng-blur="blur3()"/>
+			</div>
+			
+			<div>				
+				<button type="submit" id="login">添加提交</button>
+			</div>
+			<br/>
+			<br/>
+		</form>
+		<div id="message"><span >{{msg}}</span><span></span></div>
+	</div>

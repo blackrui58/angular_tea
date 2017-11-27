@@ -1,0 +1,27 @@
+#hcb-uselist {width: 1380px;margin-left: 10px;}
+#hcb-uselist h4 {width: 100%;border-bottom:1px solid #ccc;font-family: '楷体';font-style: italic;}
+#hcb-uselist h4 span {font-size: 22px;}
+#hcb-uselist .hcb-userlist-search {width: 320px; overflow: hidden;}
+#hcb-uselist .hcb-userlist-search input {width: 240px;height: 34px;border:1px solid #ccc;border-radius: 4px;float:left;}
+#hcb-uselist .hcb-userlist-search button {width: 60px;height: 36px;border-radius: 4px;background-color: #21a2ff;color:#fff;font-size: 20px;border:none;float: right;}
+
+#hcb-uselist .hcb-uselist-table {width: 100%; margin:10px 0;border:1px solid #ccc;}
+#hcb-uselist .hcb-uselist-table tr {width: 100%;height: 40px;}
+#hcb-uselist .hcb-uselist-table tr th,#hcb-uselist .hcb-uselist-table tr td {font: bold 16px/40px}
+#hcb-uselist .hcb-uselist-table tr th {background-color: #eef1f6;}
+.hcb-uselist-th1 {width: 60px;padding-left:20px;}
+.hcb-uselist-th2 {width: 120px;}
+.hcb-uselist-th3 {width: 100px;}
+.hcb-uselist-th4 {width: 100px;}
+.hcb-uselist-th5 {width: 120px;}
+.hcb-uselist-th6 {width: 400px;}
+#hcb-uselist .hcb-uselist-table tr td {
+	bacborder-bottom:1px solid #ccc;
+	/*background-color: #fff;*/
+}#hcb-uselist .hcb-uselist-table tr:hover {
+	background-color: #bbb;
+}
+#hcb-uselist .hcb-uselist-table,#hcb-uselist .hcb-uselist-table tr th,#hcb-uselist .hcb-uselist-table tr td {border-collapse:collapse;}
+.hcb-current-row {
+	background-color: #666;
+}

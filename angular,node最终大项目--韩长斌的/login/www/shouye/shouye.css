@@ -1,0 +1,33 @@
+
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #hcb_bg {width: 100%;height: 100%; background-color: #f4fbfd; background-image: url(../image/bbggg.png); background-repeat: repeat-x; padding-top: 30px;background-size: 100%; }
+        #hcbvideo {
+			position: absolute;
+			left: 15%;
+			top:47%;
+			z-index: 9000;
+		}
+        #ul1{
+            width: 512px;
+            height: 320px;
+            position: absolute;
+            left: 75%;
+            margin-left: -256px;
+            top: 47%;
+            overflow: hidden;
+        }
+        #ul1 li{
+            width: 512px;
+            height: 320px;
+            float: left;
+            position: absolute;
+        }
+        #ul1 li img{
+            width: 100%;
+            height: 100%;
+        }

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en-US" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<!-- <link rel="stylesheet" href="style.css" /> -->
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		.lg-container #lg-form a {
+			text-decoration: none;
+			display: block;
+			width: 100px;
+			height: 40px;
+			margin:0 auto;
+			line-height: 40px;
+			text-align: center;
+			/*float:right;*/
+			/*margin-left:25px;*/
+			color:#666;
+		}
+		.lg-container #lg-form a:hover{
+			color:red;
+		}
+	</style>
+	<script type="text/javascript" src="./libs/jquery.js"></script>
+	<script type="text/javascript" src="./libs/angular.js"></script>
+	<script type="text/javascript" src="./libs/login.js"></script>
+</head>
+<body>
+	<div class="lg-container" ng-controller="f">
+		<h1>用户登录</h1>
+		<form id="lg-form" name="lg-form" method="post" ng-submit="submit()">
+			
+			<div>
+				<input type="text" name="username" id="username" placeholder="username" ng-model="x"/>
+			</div>
+			
+			<div>
+				<input type="password" name="password" id="password" placeholder="password" ng-model="y"/>
+			</div>
+			
+			<div>				
+				<button type="submit" id="login">Login</button>&nbsp;
+			</div>
+			<a href="register.html">无账户注册</a>
+		</form>
+		<div id="message"><span >{{isShow}}&nbsp;</span><span >{{isHide}}</span></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+
+			@charset "UTF-8";
+			.login-container[data-v-293b1e6c] {
+				/*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				background-clip: padding-box;
+				margin: 160px auto;
+				width: 350px;
+				padding: 35px 35px 15px 35px;
+				background: #fff;
+				border: 1px solid #eaeaea;
+				box-shadow: 0 0 25px #cac6c6;
+				/* IE 10 */
+				/*火狐*/
+				/*谷歌*/
+				/* Safari 4-5, Chrome 1-9*/
+				/*Safari5.1 Chrome 10+*/
+				background: -o-linear-gradient(top, #fff, #6495ed);
+				/*Opera 11.10+*/
+			}
+			
+			.login-container .title[data-v-293b1e6c] {
+				margin: 0px auto 40px auto;
+				text-align: center;
+				color: #505458;
+			}
+			
+			.login-container .remember[data-v-293b1e6c] {
+				margin: 0px 0px 35px 0px;
+			}
+			
+			.hcb-active {
+				background-color: #00C1DE;
+			}

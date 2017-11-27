@@ -1,0 +1,324 @@
+<div data-v-406f678e="" class="grid-content bg-purple-light">
+	<div data-v-406f678e="" class="content-wrapper el-col el-col-24">
+		<div data-v-406f678e="" class="warp el-row">
+			<div class="warp-breadcrum el-col el-col-24">
+				<div class="el-breadcrumb"><span class="el-breadcrumb__item"><span class="el-breadcrumb__item__inner"><b>首页</b></span><span class="el-breadcrumb__separator">/</span></span> <span class="el-breadcrumb__item"><span class="el-breadcrumb__item__inner">图书管理</span><span class="el-breadcrumb__separator">/</span></span> <span class="el-breadcrumb__item"><span class="el-breadcrumb__item__inner">图书列表</span><span class="el-breadcrumb__separator">/</span></span>
+				</div>
+			</div>
+			<div class="warp-main el-col el-col-24">
+				<div class="toolbar el-col el-col-24" style="padding-bottom: 0px;">
+					<form class="el-form el-form--inline">
+						<div class="el-form-item">
+							<!---->
+							<div class="el-form-item__content">
+								<div class="el-input">
+									<!---->
+									<!----><input ng-model="ss" autocomplete="off" placeholder="书名" type="text" rows="2" validateevent="true" class="el-input__inner">
+									<!---->
+									<!---->
+								</div>
+								<!---->
+							</div>
+						</div>
+						<div class="el-form-item">
+							<!---->
+							<div class="el-form-item__content"><button type="button" class="el-button el-button--primary"><!----><!----><span>查询</span></button>
+								<!---->
+							</div>
+						</div>
+						<div class="el-form-item">
+							<!---->
+							<div class="el-form-item__content"><button type="button" ng-click="add=true" class="el-button el-button--primary"><!----><!----><span>新增</span></button>
+								<!---->
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" style="width: 100%; position: relative;">
+					<div class="hidden-columns">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<div class="el-table__header-wrapper">
+						<table cellspacing="0" cellpadding="0" border="0" class="el-table__header" style="width: 100%;">
+							<colgroup>
+								<col name="el-table_1_column_1" width="55">
+								<col name="el-table_1_column_2" width="60">
+								<col name="el-table_1_column_3" width="48">
+								<col name="el-table_1_column_4" width="802">
+								<col name="el-table_1_column_5" width="100">
+								<col name="el-table_1_column_6" width="150">
+								<col name="el-table_1_column_7" width="150">
+								<col name="gutter" width="">
+							</colgroup>
+							<thead>
+								<tr>
+									<th colspan="1" rowspan="1" class="el-table_1_column_1 el-table-column--selection is-leaf">
+										<div class="cell">
+											<label class="el-checkbox">
+												<span class="el-checkbox__input" ng-class="{'is-checked':all}">
+													<span class="el-checkbox__inner"></span>
+													<input type="checkbox" class="el-checkbox__original" value="" ng-model="all" ng-change="delectAll()">
+												</span>
+												<!---->
+											</label>
+										</div>
+									</th>
+									<th colspan="1" rowspan="1" class="el-table_1_column_2 is-leaf">
+										<div class="cell">#</div>
+									</th>
+									<th colspan="1" rowspan="1" class="el-table_1_column_3 el-table__expand-column is-leaf">
+										<div class="cell"></div>
+									</th>
+									<th colspan="1" rowspan="1" class="el-table_1_column_4 is-leaf is-sortable">
+										<div class="cell">书名<span class="caret-wrapper"><i class="sort-caret ascending"></i><i class="sort-caret descending"></i></span></div>
+									</th>
+									<th colspan="1" rowspan="1" class="el-table_1_column_5 is-leaf is-sortable">
+										<div class="cell">作者<span class="caret-wrapper"><i class="sort-caret ascending"></i><i class="sort-caret descending"></i></span></div>
+									</th>
+									<th colspan="1" rowspan="1" class="el-table_1_column_6 is-leaf is-sortable">
+										<div class="cell">出版日期<span class="caret-wrapper"><i class="sort-caret ascending"></i><i class="sort-caret descending"></i></span></div>
+									</th>
+									<th colspan="1" rowspan="1" class="el-table_1_column_7 is-leaf">
+										<div class="cell">操作</div>
+									</th>
+									<th class="gutter" style="width: 0px;"></th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="el-table__body-wrapper">
+						<table cellspacing="0" cellpadding="0" border="0" class="el-table__body" style="width: 100%;">
+							<colgroup>
+								<col name="el-table_1_column_1" width="55">
+								<col name="el-table_1_column_2" width="60">
+								<col name="el-table_1_column_3" width="48">
+								<col name="el-table_1_column_4" width="802">
+								<col name="el-table_1_column_5" width="100">
+								<col name="el-table_1_column_6" width="150">
+								<col name="el-table_1_column_7" width="150">
+							</colgroup>
+							<tbody>
+								<tr class="el-table__row" ng-class="{'current-row':$index == index}" ng-click="changeIndex($index)" ng-repeat="y in data | filter:ss">
+									<td class="el-table_1_column_1 el-table-column--selection">
+										<div class="cell">
+											<label class="el-checkbox">
+												<span class="el-checkbox__input" ng-class="{'is-checked':y.checked}">
+													<span class="el-checkbox__inner"></span>
+													<input type="checkbox" class="el-checkbox__original" value="" ng-model="y.checked">
+												</span>
+												<!---->
+											</label>
+										</div>
+									</td>
+									<td class="el-table_1_column_2">
+										<div class="cell">
+											<div>{{$index+1}}</div>
+										</div>
+									</td>
+									<td class="el-table_1_column_3 el-table__expand-column">
+										<!--详情-->
+										<div class="cell" add-con="{{y.content}}">
+											<div class="el-table__expand-icon"><i class="el-icon el-icon-arrow-right"></i></div>
+										</div>
+									</td>
+									<td class="el-table_1_column_4">
+										<div class="cell">{{y.title}}</div>
+									</td>
+									<td class="el-table_1_column_5">
+										<div class="cell">{{y.author}}</div>
+									</td>
+									<td class="el-table_1_column_6">
+										<div class="cell">{{y.date}}</div>
+									</td>
+									<td class="el-table_1_column_7">
+										<div class="cell"><button type="button" class="el-button el-button--default el-button--small" ng-click="updateMsg($index)"><!----><!----><span>编辑</span></button> <button type="button" class="el-button el-button--danger el-button--small" ng-click="deleteBook(y.id)"><!----><!----><span>删除</span></button></div>
+									</td>
+								</tr>
+								<!--详情-->
+								<!--<tr style="display: none;">
+									<td colspan="7" class="el-table__expanded-cell">
+										<form class="el-form demo-table-expand el-form--label-left el-form--inline">
+											<div class="el-form-item"><label class="el-form-item__label">[图书简介]</label>
+												<div class="el-form-item__content"><span>{{y.content}}</span></div>
+											</div>
+										</form>
+									</td>
+								</tr>-->
+							</tbody>
+						</table>
+						<!---->
+					</div>
+					<!---->
+					<!---->
+					<!---->
+					<!---->
+					<div class="el-table__column-resize-proxy" style="display: none;"></div>
+					<div class="resize-triggers">
+						<div class="contract-trigger"></div>
+					</div>
+					<div class="el-loading-mask" style="display: none;">
+						<div class="el-loading-spinner">
+							<svg viewBox="25 25 50 50" class="circular">
+								<circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+							</svg>
+							<!---->
+						</div>
+					</div>
+				</div>
+
+				<div class="toolbar el-col el-col-24">
+					<button ng-disabled="false" ng-class="{' is-disabled':showDelete()}" type="button" class="el-button el-button--danger" ng-click="deleteAll()">		
+						<!---->
+						<!---->
+						<span>批量删除</span>	
+					</button>
+					<div class="el-pagination" style="float: right;"><button type="button" class="btn-prev disabled"><i class="el-icon el-icon-arrow-left"></i></button>
+						<!--页码-->
+						<ul class="el-pager">
+							<li class="number" ng-class="{active:($index+1) == page}" ng-click="pageClass($index+1)" ng-repeat="z in pageData track by $index">{{$index+1}}</li>
+							<!---->
+
+							<!--<li class="el-icon more btn-quicknext el-icon-more"></li>-->
+
+						</ul><button type="button" class="btn-next"><i class="el-icon el-icon-arrow-right"></i></button>
+					</div>
+				</div>
+				<div class="el-dialog__wrapper" style="z-index: 2003;" ng-show="update">
+					<div class="el-dialog el-dialog--small" style="top: 15%;">
+						<div class="el-dialog__header"><span class="el-dialog__title">编辑</span><button type="button" ng-click="update=false" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div>
+						<div class="el-dialog__body">
+							<form class="el-form" ng-submit="updateSubmit()" method="post"> 
+								<div class="el-form-item is-required" ng-class="{'is-error':msgtitle}"><label for="name" class="el-form-item__label" style="width: 80px;">书名</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-input">
+											<!---->
+											<!----><input autocomplete="off" type="text" rows="2" validateevent="true" class="el-input__inner" ng-model="title" ng-blur = "msgTitle()">
+											<!---->
+											<!---->
+										</div>
+										<div class="el-form-item__error" ng-show="msgtitle">请输入书名</div>
+									</div>
+								</div>
+								<div class="el-form-item is-required" ng-class="{'is-error':msgauthor}"><label for="author" class="el-form-item__label" style="width: 80px;">作者</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-input">
+											<!---->
+											<!----><input autocomplete="off" type="text" rows="2" validateevent="true" class="el-input__inner" ng-model="author" ng-blur = "msgAuthor()">
+											<!---->
+											<!---->
+										</div>
+										<div class="el-form-item__error" ng-show="msgauthor">请输入作者</div>
+									</div>
+								</div>
+								<div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">出版日期</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-date-editor el-input el-date-editor--date">
+											<!----><input autocomplete="off" placeholder="选择日期" type="date" rows="2" class="el-input__inner" ng-model="date">
+											<!---->
+											<!---->
+										</div>
+										<!---->
+									</div>
+								</div>
+								<div class="el-form-item is-required" ng-class="{'is-error':msgcontent}"><label for="description" class="el-form-item__label" style="width: 80px;">简介</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-textarea">
+											<textarea type="textarea" rows="8" autocomplete="off" validateevent="true" class="el-textarea__inner" ng-model="content" ng-blur = "msgContent()"></textarea>
+										</div>
+										<div class="el-form-item__error" ng-show="msgcontent">请输入简介</div>
+									</div>
+								</div>
+								<div class="el-dialog__footer">
+								<div class="dialog-footer">
+										<button type="button" ng-click="update=false" class="el-button el-button--default">
+											<!---->
+											<!---->
+											<span>取消</span>
+										</button> 
+										<button class="el-button el-button--primary">		
+											<!---->
+											<!---->
+											<span>提交</span>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+				<div class="el-dialog__wrapper" style="z-index: 2005;" ng-show="add">
+					<div class="el-dialog el-dialog--small" style="top: 15%;">
+						<div class="el-dialog__header"><span class="el-dialog__title">新增</span><button type="button" ng-click="add=false" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div>
+						<div class="el-dialog__body">
+							<form class="el-form" ng-submit="addSubmit()" method="post"> 
+								<div class="el-form-item is-required" ng-class="{'is-error':msgtitle}"><label for="name" class="el-form-item__label" style="width: 80px;">书名</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-input">
+											<!---->
+											<!----><input autocomplete="off" type="text" rows="2" validateevent="true" class="el-input__inner" ng-model="title" ng-blur = "msgTitle()">
+											<!---->
+											<!---->
+										</div>
+										<div class="el-form-item__error" ng-show="msgtitle">请输入书名</div>
+									</div>
+								</div>
+								<div class="el-form-item is-required" ng-class="{'is-error':msgauthor}"><label for="author" class="el-form-item__label" style="width: 80px;">作者</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-input">
+											<!---->
+											<!----><input autocomplete="off" type="text" rows="2" validateevent="true" class="el-input__inner" ng-model="author" ng-blur = "msgAuthor()">
+											<!---->
+											<!---->
+										</div>
+										<div class="el-form-item__error" ng-show="msgauthor">请输入作者</div>
+									</div>
+								</div>
+								<div class="el-form-item"><label class="el-form-item__label" style="width: 80px;">出版日期</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-date-editor el-input el-date-editor--date">
+											<!----><input autocomplete="off" placeholder="选择日期" type="date" rows="2" class="el-input__inner" ng-model="date">
+											<!---->
+											<!---->
+										</div>
+										<!---->
+									</div>
+								</div>
+								<div class="el-form-item is-required" ng-class="{'is-error':msgcontent}"><label for="description" class="el-form-item__label" style="width: 80px;">简介</label>
+									<div class="el-form-item__content" style="margin-left: 80px;">
+										<div class="el-textarea">
+											<textarea type="textarea" rows="8" autocomplete="off" validateevent="true" class="el-textarea__inner" ng-model="content" ng-blur = "msgContent()"></textarea>
+										</div>
+										<div class="el-form-item__error" ng-show="msgcontent">请输入简介</div>
+									</div>
+								</div>
+								<div class="el-dialog__footer">
+								<div class="dialog-footer">
+										<button type="button" ng-click="add=false" class="el-button el-button--default">
+											<!---->
+											<!---->
+											<span>取消</span>
+										</button> 
+										<button class="el-button el-button--primary">		
+											<!---->
+											<!---->
+											<span>提交</span>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

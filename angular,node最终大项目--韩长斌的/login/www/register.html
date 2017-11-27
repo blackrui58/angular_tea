@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en-US" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<!-- <link rel="stylesheet" href="style.css" /> -->
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		.lg-container #lg-form #login {
+			float:left;
+			margin-left:90px;
+		}
+		.lg-container #lg-form a {
+			text-decoration: none;
+			display: block;
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin:0 auto;
+			/*float:left;*/
+			/*margin-left:25px;*/
+			color:#666;
+		}
+		.lg-container #lg-form a:hover{
+			color:red;
+		}
+	</style>
+	<script type="text/javascript" src="libs/jquery.js"></script>
+	<script type="text/javascript" src="libs/angular.js"></script>
+	<script type="text/javascript" src="libs/register.js"></script>
+</head>
+<body>
+	<div class="lg-container" ng-controller="g">
+		<h1>用户注册</h1>
+		<form id="lg-form" name="lg-form" method="post" ng-submit="submit2()" name="t_form">
+			
+			<div>
+				<input type="text" name="username" id="username" placeholder="用户名" ng-model="a" ng-blur="blur1()"/>
+			</div>
+			
+			<div>
+				<input type="password" name="password" id="pwd" placeholder="登录密码" ng-model="b" ng-blur="blur2()"/>
+			</div>
+
+			<div>
+				<input type="password" name="password" id="repwd" placeholder="重复登录密码" ng-model="c" ng-blur="blur3()"/>
+			</div>
+			
+			<div>				
+				<button type="submit" id="login">register</button>
+			</div>
+			<a href="login.html">返回登录</a>
+			<br/>
+		</form>
+		<div id="message"><span >{{msg}}</span><span></span></div>
+	</div>
+</body>
+</html>

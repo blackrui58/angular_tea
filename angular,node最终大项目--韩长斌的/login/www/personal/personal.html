@@ -1,0 +1,40 @@
+
+	<!--<form class="hcb-form">
+		<div class="hcb-msg">添加个人信息</div>
+		<div class="msg-content">
+			<span>用户名：</span><input type="text">	
+		</div>
+		<div class="msg-content">
+			<span>设置密码：</span><input type="text">	
+		</div>
+		<div class="msg-content">
+			<span>重复密码：</span><input type="text">	
+		</div>
+		<div class="msg-content">
+			<button><span>提交</span></button>	
+		</div>
+	</form>-->
+	<div class="lg-container">
+		<h1>添加个人信息</h1>
+		<form id="lg-form" name="lg-form" method="post" ng-submit="submit2()" name="t_form">
+			
+			<div>
+				<input type="text" name="username" id="username" placeholder="用户名" ng-model="a" ng-blur="blur1()"/>
+			</div>
+			
+			<div>
+				<input type="password" name="password" id="pwd" placeholder="登录密码" ng-model="b" ng-blur="blur2()"/>
+			</div>
+
+			<div>
+				<input type="password" name="password" id="repwd" placeholder="重复登录密码" ng-model="c" ng-blur="blur3()"/>
+			</div>
+			
+			<div>				
+				<button type="submit" id="login">添加提交</button>
+			</div>
+			<br/>
+			<br/>
+		</form>
+		<div id="message"><span >{{msg}}</span><span></span></div>
+	</div>

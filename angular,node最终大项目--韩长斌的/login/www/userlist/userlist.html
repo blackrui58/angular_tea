@@ -1,0 +1,25 @@
+<!-- 大盒子 -->
+<div id="hcb-uselist">
+	<h4><span>首页</span>/用户列表</h4>
+	<div class="hcb-userlist-search">
+		<input type="text" placeholder="姓名" ng-model="vv"><button ng-click="search()">查询</button>
+	</div>
+	<table class="hcb-uselist-table">
+		<tr>
+			<th class="hcb-uselist-th1">#</th>
+			<th class="hcb-uselist-th2">姓名</th>
+			<th class="hcb-uselist-th3">性别</th>
+			<th class="hcb-uselist-th5">年龄</th>
+			<th class="hcb-uselist-th5">生日</th>
+			<th class="hcb-uselist-th6">地址</th>
+		</tr>
+		<tr ng-repeat="x in data | filter: vv " ng-class="{'hcb-current-row':$index == userIndex}" ng-click="userChange($index)">
+			<td class="hcb-uselist-th1">{{$index+1}}</td>
+			<td class="hcb-uselist-th2">{{x.name}}</td>
+			<td class="hcb-uselist-th3">{{x.sex}}</td>
+			<td class="hcb-uselist-th4">{{x.age}}</td>
+			<td class="hcb-uselist-th5">{{x.birthday}}</td>
+			<td class="hcb-uselist-th6">{{x.address}}</td>
+		</tr>
+	</table>
+</div>

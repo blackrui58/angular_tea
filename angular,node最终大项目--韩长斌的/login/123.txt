@@ -1,0 +1,51 @@
+angular.module('apped').controller('bookslistCtrl',['$scope','$http',function($scope,$http){
+	$scope.booksListData = [];
+	$scope.pageData = [];
+	$scope.pageIndex=-1;
+	//获取数据
+	$http.get('/bookslist').then(function(str){
+		//获取数据
+		var json = str.data;
+		console.log(json);
+		//测试
+		var hh = json.data[0].date;
+		console.log(hh ,typeof hh);
+		遍历数组,分割date
+		angular.forEach(json.data,function(ele){
+//			console.log(ele.date);
+			//分割字符串变数组
+			var arr = ele.date.split('-');
+//			console.log(arr);
+			//把数组里的每一个值变成时间对象
+			var oDate = new Date();
+			ele.date = oDate.setFullYear(arr[0])+'-'+oDate.setMonth(arr[1])+'-'+oDate.setDate(arr[2]);
+			console.log(ele.date)
+		})
+		$scope.booksListData =json.data;
+		//数组的长度等于总页数
+		$scope.pageData.length = json.total_page;
+	})
+	//点谁谁变色
+	$scope.pageClass=function(str){
+		$scope.pageIndex=str;
+	}
+	
+}])
+
+
+
+
+//遍历数组,分割date
+		angular.forEach(json.data,function(ele){
+//			console.log(ele.date);
+			//分割字符串变数组
+//			var arr = ele.date.split('-');
+//			console.log(arr);
+			//把数组里的每一个值变成时间对象
+			var oDate = new Date();
+			var arr=ele.date.match(/\w+/g);
+//			console.log(arr)
+			ele.date = oDate.getFullYear(arr[0])+'-'+oDate.getMonth(arr[1])+'-'+oDate.getDate(arr[2]);
+//			console.log(ele.date)
+			
+		})
